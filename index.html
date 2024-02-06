@@ -1,0 +1,122 @@
+ <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="style.css">
+      <title>Valentine's Day</title>
+      <style>
+        /* Add your CSS styles here */
+        .valentine-container {
+          text-align: center;
+        }
+    
+        .h-[200px] 
+          width: 40px;
+          height: 240px;
+        
+    
+        .text-container {
+          font-size: 24px;
+        }
+    
+        .yesButton {
+          font-size: 16px;
+          font-family: Georgia, 'Times New Roman', Times, serif;
+          font-weight: bold;
+          background-color: rgb(183, 236, 103);
+          border-radius: 25px;
+          padding: 25px;
+          margin: 20px;
+          text-align: center;
+          text-decoration: none;
+          text-transform: uppercase;
+         border-radius: 25px;
+         cursor: pointer;
+         box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    
+        .noButton {
+            font-size: 16px;
+          font-family: Georgia, 'Times New Roman', Times, serif;
+          font-weight: bold;
+          background-color: rgb(231, 100, 100);
+          border-radius: 25px;
+          padding: 25px;
+          margin: 20px;
+          text-align: center;
+          text-decoration: none;
+          text-transform: uppercase;
+         border-radius: 25px;
+         cursor: pointer;
+         box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    
+        /* Add any additional styling as needed */
+      </style>
+    </head>
+    <body>
+      <div class="valentine-container">
+        <script>
+          const phrase = [
+            "No",
+            "Are you sure?",
+            "Really sure?",
+            "Wrong answer",
+            "Try again...",
+            "Have a heart",
+            "Don't be so cold!",
+            "Are you serious??",
+            "last chance",
+            "You might regret this...",
+            "Pookie Please",
+            "Fr? on Black History Month???!",
+            "I'm gonna cry...",
+          ];
+    
+          let NoCount = 0;
+          let yesPressed = false;
+          const valentineContainer = document.querySelector('.valentine-container');
+    
+          function handleNoClick() {
+            NoCount++;
+            render();
+          }
+    
+          function setYesPressed(value) {
+        yesPressed = value;
+        render();
+          }
+
+
+          function getNoButtonText() {
+            return phrase[Math.min(NoCount, phrase.length - 1)];
+          }
+    
+          function render() {
+            valentineContainer.innerHTML = '';
+    
+            if (yesPressed) {
+              valentineContainer.innerHTML = `
+                <img alt="bears kissing" src="https://media1.tenor.com/m/jQ6kJtz92hsAAAAC/romantic-couple-of-teddy-bears-kissing-romantic-couple.gif">
+                <div class="text">YAY!!!!!</div>
+              `;
+            } else {
+              valentineContainer.innerHTML = `
+                <img class="h-[200px]" alt="bears with hearts" src="https://media1.tenor.com/m/FZfcPyYj1r4AAAAC/peach-goma-goma-peach.gif">
+                <h1 class="text-container">Will you be my Valentine???</h1>
+                <div>
+                  <button class="yesButton" style="font-size: ${NoCount * 20 + 16}px" onclick="setYesPressed(true)">Yes</button>
+                  <button onclick="handleNoClick()" class="noButton">${getNoButtonText()}</button>
+                </div>
+              `;
+            }
+          }
+    
+          // Initial render
+          render();
+        </script>
+      </div>
+    </body>
+    </html>
+    
